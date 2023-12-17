@@ -5,7 +5,6 @@ const AdminDashboard = () => {
   return (
     <Layout>
         <h1>AdminDashboard</h1>
-
         </Layout>
   )
 }

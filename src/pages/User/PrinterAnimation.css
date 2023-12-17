@@ -1,11 +1,12 @@
-@-moz-keyframes page1 {
-	0%   { -moz-transform: translateY(0px); -moz-animation-timing-function: linear;}
-	100% { -moz-transform: translateY(125px); }			
-}
-@-webkit-keyframes page1 {
-	0%   { -webkit-transform: translateY(0px); -webkit-animation-timing-function: linear;}
-	100% { -webkit-transform: translateY(125px); }		
-}
+@keyframes page1 {
+        0%   { transform: translateY(0px); animation-timing-function: linear; }
+        100% { transform: translateY(125px); }
+    }
+    
+    @keyframes page2 {
+        0%   { transform: translateY(0px); animation-timing-function: linear; }
+        100% { transform: translateY(125px); }
+    }
 
 .printerWrapper { 
 position: relative;
@@ -34,6 +35,7 @@ margin-left: -90px;
 height: 123px;
 width: 131px;
 margin-top: 12px;  
+animation: page1 3s infinite;
 /*color*/
 background-color: #d6d7e1;
 	-webkit-box-shadow: 0 0 6px rgba(0,0,0,.34);
@@ -64,6 +66,22 @@ z-index: 250;
 }
 .page2 {
 z-index: 245;
+
+-moz-animation: page2 3s infinite;
+-webkit-animation: page2 3s infinite;
+}
+.page3 {
+	z-index: 240;
+
+	-moz-animation: page1 3s infinite;
+	-webkit-animation: page1 3s infinite;	
+}
+.page4 {
+	z-index: 235;
+
+	-moz-animation: page4 3s infinite;
+	-webkit-animation: page4 3s infinite;
+
 }
 
 .paperInsert {
@@ -207,7 +225,7 @@ background-image: -webkit-radial-gradient(50% 80%, rgb(49, 226, 252), rgb(30, 15
 background-image: -moz-radial-gradient(50% 80%, rgb(49, 226, 252), rgb(30, 152, 199));
 background-image: -o-radial-gradient(50% 80%, rgb(49, 226, 252), rgb(30, 152, 199));
 background-image: -ms-radial-gradient(50% 80%, rgb(49, 226, 252), rgb(30, 152, 199));
-background-image: radial-gradient(50% 80%, rgb(49, 226, 252), rgb(30, 152, 199));
+background: radial-gradient(closest-side at 0 0, red, blue);
 -webkit-box-shadow: 0px 1px 1px rgba(180, 180, 180, 0.8) inset, 0px 0px 0px 2px rgba(255, 255, 255, .1), 0px 5px 3px rgba(200, 200, 200, .45);
 -box-shadow: 0px 1px 1px rgba(180, 180, 180, 0.8) inset, 0px 0px 0px 2px rgba(255, 255, 255, 1), 0px 5px 3px rgba(200, 200, 200, .45);
 }
@@ -229,7 +247,8 @@ background-image: -webkit-radial-gradient(50% 80%, rgb(111, 111, 121), rgb(82, 8
 background-image: -moz-radial-gradient(50% 80%, rgb(111, 111, 121), rgb(82, 82, 92));
 background-image: -o-radial-gradient(50% 80%, rgb(111, 111, 121), rgb(82, 82, 92));
 background-image: -ms-radial-gradient(50% 80%, rgb(111, 111, 121), rgb(82, 82, 92));
-background-image: radial-gradient(50% 80%, rgb(111, 111, 121), rgb(82, 82, 92));
+background: radial-gradient(closest-side at 0 0, red, blue);
+
 }
 
 .facePlate {
@@ -348,3 +367,34 @@ border-top-right-radius:30px;
 height: 0;
 width: 137px;
 }
+
+
+/* CSS for the printer and moving page */
+.printer {
+	position: relative;
+	width: 100px; /* Adjust the width and height according to your design */
+	height: 100px;
+	background-color: #333; /* Printer color */
+	border-radius: 10px;
+	overflow: hidden;
+      }
+      
+      .page {
+	position: absolute;
+	width: 100px; /* Adjust the width according to your design */
+	height: 100px; /* Adjust the height according to your design */
+	background-color: white; /* Page color */
+	top: 100%; /* Initially, place the page below the printer */
+	animation: movePage 2s linear infinite; /* Apply the animation */
+      }
+      
+      /* Define the animation */
+      @keyframes movePage {
+	0% {
+	  top: 100%; /* Starting position, below the printer */
+	}
+	100% {
+	  top: -50%; /* Ending position, above the printer */
+	}
+      }
+      
